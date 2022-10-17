@@ -8,6 +8,7 @@ if(userName !=null){
 
 const previousGuess = document.querySelector('.previousGuess')
 const rightWrong = document.querySelector('.rightWrong')
+const finalGuess = document.querySelector(".finalGuess")
 const submit = document.querySelector('.submit');
 let points = document.querySelector('.points')
 
@@ -30,8 +31,23 @@ function checkGuess(){
         guessedNums.push(usersGuess)
         
     }
-   
-    if(usersGuess < rightGuess){
+
+    if (range >= 5 && usersGuess > rightGuess) {
+        rightWrong.textContent = "YOur guess is high, try again"
+        previousGuess.textContent = "Previous guess: " + guessedNums
+    } else if (range >= 5 && usersGuess < rightGuess) {
+        rightWrong.textContent = "YOur guess is low, try again"
+        previousGuess.textContent = "Previous guess: " + guessedNums
+    } else if (range >= 5 && usersGuess == rightGuess) {
+        count = count + 1
+
+        points.textContent = "points: " + count
+
+        rightWrong.textContent = "congrats , you got it"
+        previousGuess.textContent = "Your guess: " + rightGuess
+        range++
+        rightGuess = Math.floor(Math.random() * range) + 1
+    }else if(usersGuess < rightGuess){
         rightWrong.textContent = "your guess is wrong, try again"
         previousGuess.textContent = "Previous guess: " + guessedNums
      
@@ -49,14 +65,14 @@ function checkGuess(){
         previousGuess.textContent = "Your guess: " + rightGuess
          range++
         
-      
+        rightGuess = Math.floor(Math.random() * range) + 1
     }
    
-    // rightGuess;
+
+    
 }
 
-rightGuess = Math.floor(Math.random() * range) + 1
-previousGuess.textContent = "Previous guess: "
+
 
 
 
