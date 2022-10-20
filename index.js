@@ -1,108 +1,34 @@
-let userName = prompt("Please enter your username");
+const userName = prompt("what is your name")
 
-if(userName !=null){
-    const usersGreating = document.querySelector("#user_welcome")
-    usersGreating.textContent = "hello " + userName + "! you are welcome"
-    // console.log(usersGreating)   
+
+function guessNumber(range){
+  range = 2;
+  let point = 0;
+  let foundCorrectNumber = false;
+  let numberToGuess = Math.floor(Math.random() * range) + 1;
+
+  while (!foundCorrectNumber) {
+  // Get user input
+  let guess = prompt(`Guess a number from 1 to ${range}: `);
+
+  guess = Number(guess);
+
+  // Compare the guess to the randomNumber  generated and let the user know.
+  if (guess === numberToGuess) {
+    console.log('Congrats, you got it!');
+    point++
+    console.log(`point: ${point}`)
+    numberToGuess = Math.floor(Math.random() * range) + 1;
+
+    range++;
+    
+    
+    
+  } else {
+    console.log('Sorry, guess again!');
+  }
 }
 
-const previousGuess = document.querySelector('.previousGuess')
-const rightWrong = document.querySelector('.rightWrong')
-const finalGuess = document.querySelector(".finalGuess")
-const submit = document.querySelector('.submit');
-let points = document.querySelector('.points')
-
-let count = 0
-let range = 2;
-
-let rightGuess = Math.floor(Math.random() * range) + 1
-
-
-
-let guessedNums = []
-submit.addEventListener('click', checkGuess)
-
-function checkGuess(){
-    let usersGuess = document.querySelector('.guessedNumberField').value;
-    
-    if(usersGuess < 1 || usersGuess > range){
-        alert(`Enter a number between 1 and ${range}`)
-    }else{
-        guessedNums.push(usersGuess)
-        
-    }
-
-    if (range >= 5 && usersGuess > rightGuess) {
-        rightWrong.textContent = "YOur guess is high, try again"
-        previousGuess.textContent = "Previous guess: " + guessedNums
-    } else if (range >= 5 && usersGuess < rightGuess) {
-        rightWrong.textContent = "YOur guess is low, try again"
-        previousGuess.textContent = "Previous guess: " + guessedNums
-    } else if (range >= 5 && usersGuess == rightGuess) {
-        count = count + 1
-
-        points.textContent = "points: " + count
-
-        rightWrong.textContent = "congrats , you got it"
-        previousGuess.textContent = "Your guess: " + rightGuess
-        range++
-        rightGuess = Math.floor(Math.random() * range) + 1
-    }else if(usersGuess < rightGuess){
-        rightWrong.textContent = "your guess is wrong, try again"
-        previousGuess.textContent = "Previous guess: " + guessedNums
-     
-
-    }else if(usersGuess > rightGuess){
-        rightWrong.textContent = "your guess is wrong, try again"
-        previousGuess.textContent = "Previous guess: " +guessedNums
-       
-    }else if (usersGuess == rightGuess){
-        count = count + 1
-       
-        points.textContent = "points: " + count
-       
-        rightWrong.textContent = "congrats , you got it"
-        previousGuess.textContent = "Your guess: " + rightGuess
-         range++
-        
-        rightGuess = Math.floor(Math.random() * range) + 1
-    }
-   
-
-    
+  
 }
-
-
-
-
-
-
-
-
-
-
-
-// const submit = document.querySelector('.submit');
-
-// submit.addEventListener('click', checkGuess)
-
-
-//     let range = 2
-
-
-//  function checkGuess(range){
-//     
-     
-
-//      let rndInt = Math.floor(Math.random() * range) + 1
-//      let point = 0
-//      if(usersGuess === rndInt){
-//         point += 1
-//         range += 1
-    
-//      }
-     
-// }
- 
-
-
+guessNumber(2)
