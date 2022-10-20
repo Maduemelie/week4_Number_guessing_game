@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <div >
+        <p id="user_welcome">Hello</p>
+        <p class="points">points: 0</p>
+    </div>
+    <form action="#">
+        <!-- <label for="range">Range</label>
+        <input type="range" id="range" name="range" min="1" max="2"> -->
+        <label for="guess">Guess Number</label>
+        <input type="number" required id="guess" class="guessedNumberField">
+        <input type="submit" value="submit" class="submit">
+    </form>
+
+    <div class="resultsData">
+        <p class="previousGuess">Previous Guesses: </p>
+        <p class="finalGuess"></p>
+        <p class="rightWrong"></p>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
